@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Cookies from "universal-cookie";
+import "./login.css"
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -38,24 +39,26 @@ export default function Login() {
       <main className="login">
         <main className="overlay"></main>
         <div className="container">
-          <div className="title">Login</div>
-          <form onSubmit={handleSubmit}>
+          <div className="login-title">Login</div>
+          <form onSubmit={handleSubmit} className="form">
             <input
+              className="login-input"
               type="email"
-              placeholder="Email"
+              placeholder="Enter your Email ID"
               value={email}
               onChange={(e) =>
                 setEmail(e.target.value.toLowerCase().replaceAll(" ", ""))
               }
             ></input>
             <input
+              className="login-input"
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             {error && error}
-            <button type="submit" disabled={loading}>
+            <button type="submit" disabled={loading} className="login-button">
               {loading ? "Logging you in...." : "Login"}
             </button>
           </form>
